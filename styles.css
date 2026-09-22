@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+body {
+  background-color: rgb(246, 249, 251);
+  padding: 30px;
+  font-family: Inter;
+
+}
+
+.header {
+  background-color: white;
+  padding: 20px;
+  border: 1px solid rgba(128, 128, 128, 0.24);
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo i {
+  color: rgb(42, 117, 223);
+  font-size: 45px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.newBookBtn {
+  background-color: rgb(45, 120, 226);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: transform 1 ease;
+}
+
+.newBookBtn:hover {
+  background-color: rgb(31, 111, 223);
+  cursor: pointer;
+  transform: scale(1.03);
+}
+
+.newBookBtn:active {
+  opacity: 0.8;
+}

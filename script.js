@@ -14,8 +14,22 @@ function addBookToLibrary(author, title, pages, read) {
 }
 
 
+function appendNode(object) {
+  let bookDiv = document.createElement("div");
+  bookDiv.classList = "div";
+  document.body.appendChild(bookDiv);
+  const headline = document.createElement("div");
+  bookDiv.appendChild(headline);
+  headline.textContent = (object.title);
+  const body = document.createElement("div");
+  bookDiv.appendChild(body);
+  body.textContent = `author: ${object.author}, pages: ${object.pages} haveRead: ${object.read}`;
+}
 
-
+function display() {
+  document.body.replaceChildren();
+  myLibrary.forEach(appendNode);
+}
 
 
 
