@@ -53,3 +53,109 @@ body {
 .newBookBtn:active {
   opacity: 0.8;
 }
+
+
+.bookContainer {
+  padding: 40px;
+  display: grid;
+  background-color: rgb(252, 254, 254);
+  grid-template-columns: repeat(auto-fit, minmax(500px, 550px));
+  grid-auto-rows: 300px;
+  justify-content: center;
+  gap: 40px;
+
+}
+
+.bookCard {
+  background-color: white;
+  box-shadow: 0px 0px 10px rgb(213, 223, 253);
+  border-radius: 10px;
+
+  display: grid;
+  grid-template-rows: 200px 50px;
+  grid-template-columns: 150px 1fr;
+  padding: 20px;
+}
+
+.bookCard img {
+  height: 200px;
+}
+
+.bookCard .information {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  line-height: 25px;
+  padding-top: 20px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 25px;
+  padding-bottom: 5px;
+}
+
+.pages,
+.author {
+  color: rgba(100, 97, 97, 0.932);
+  font-size: 18px;
+}
+
+.readDisplay {
+  color: green;
+  background-color: rgb(221, 245, 229);
+  width: 100px;
+  height: 40px;
+  border: 1px solid green;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-left: 15px;
+  margin-top: 10px;
+}
+
+.buttons {
+  grid-row-start: 2;
+  grid-column-start: 2;
+  display: flex;
+  gap: 10px;
+  padding-left: 20px;
+}
+
+.buttons button {
+  padding: 5px 10px;
+  font-size: 17px;
+}
+
+
+.buttons button:hover {
+  cursor: pointer;
+}
+
+.buttons button:active {
+  opacity: 0.5;
+}
+
+.removeBtn {
+  color: red;
+  border: 1px solid tomato;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.removeBtn:hover {
+  color: white;
+  background-color: red;
+}
+
+.toggleReadBtn:hover {
+  background-color: rgba(184, 178, 178, 0.541);
+}
+
+.toggleReadBtn {
+  background-color: white;
+  border: 1px solid rgb(190, 190, 190);
+  border-radius: 10px;
+}
