@@ -11,23 +11,45 @@ function Book(author, title, pages, read) {
 function addBookToLibrary(author, title, pages, read) {
   let book = new Book(author, title, pages, read);
   myLibrary.push(book);
+  display();
 }
 
 
-function appendNode(object) {
-  let bookDiv = document.createElement("div");
-  bookDiv.classList = "div";
-  document.body.appendChild(bookDiv);
-  const headline = document.createElement("div");
-  bookDiv.appendChild(headline);
-  headline.textContent = (object.title);
-  const body = document.createElement("div");
-  bookDiv.appendChild(body);
-  body.textContent = `author: ${object.author}, pages: ${object.pages} haveRead: ${object.read}`;
+function appendNode(book) {
+  const cardTemplate = document.querySelector("#cardTemplate");
+  const container = document.querySelector(".bookContainer");
+  const newBook = cardTemplate.content.cloneNode(true);
+  const title = newBook.querySelector(".title");
+  title.textContent = book.title
+  const autorText = newBook.querySelector(".author");
+  autorText.textContent = book.author
+  const pages = newBook.querySelector(".pages");
+  pages.textContent = book.pages;
+  const readDisplay = newBook.querySelector(".readDisplay");
+  const readP = readDisplay.querySelector(".readParagraph");
+  const icon = readDisplay.querySelector("i");
+  if (book.read) {
+    readP.textContent = "Read";
+    icon.className = "fa-solid fa-circle-check";
+    readDisplay.style.backgroundColor = "rgb(221, 245, 229)";
+    readDisplay.style.color = "green";
+    readDisplay.style.border = "1px solid green";
+  }
+  else {
+    readP.textContent = "Not read";
+    icon.className = "fa-solid fa-x"
+    readDisplay.style.backgroundColor = "tomato";
+    readDisplay.style.color = "white";
+    readDisplay.style.border = "1px solid red";
+  }
+
+  container.appendChild(newBook);
 }
+
 
 function display() {
-  document.body.replaceChildren();
+  const container = document.querySelector(".bookContainer");
+  container.replaceChildren();
   myLibrary.forEach(appendNode);
 }
 
