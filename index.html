@@ -48,7 +48,35 @@
     </div>
   </header>
   <div class="bookContainer"> </div>
-
+  <form class="form">
+    <div class="upper">
+      <div class="pair">
+        <label for="title">Title*</label><br>
+        <input type="text" placeholder="Enter book title" required id="title" name="title">
+      </div>
+      <div class="pair">
+        <label for="author">Author*</label><br>
+        <input type="text" name="author" id="author" required placeholder="Enter author name">
+      </div>
+    </div>
+    <div class="middle">
+      <div class="pair">
+        <label for="pages">Pages*</label><br>
+        <input type="number" name="pages" id="pages" placeholder="e.g 320" required>
+      </div>
+      <div class="pair">
+        <label for="read">Status</label><br>
+        <select name="read" id="read">
+          <option value="true">Read</option>
+          <option value="false">Unread</option>
+        </select>
+      </div>
+    </div>
+    <div class="bottom">
+      <button class="cancelBtn" type="button">Cancel</button>
+      <button class="addBookBtn" type="submit">Add Book</button>
+    </div>
+  </form>
   <script src="script.js"></script>
 </body>
 
