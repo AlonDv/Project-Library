@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(author, title, pages, read) {
   this.author = author;
@@ -14,11 +14,18 @@ function addBookToLibrary(author, title, pages, read) {
   display();
 }
 
+const container = document.querySelector(".bookContainer");
+container.addEventListener("click", removeCard);
+container.addEventListener("click", HandleToggleRead);
 
 function appendNode(book) {
   const cardTemplate = document.querySelector("#cardTemplate");
   const container = document.querySelector(".bookContainer");
   const newBook = cardTemplate.content.cloneNode(true);
+  const removeBtn = newBook.querySelector(".removeBtn");
+  removeBtn.dataset.id = book.id;
+  const toggleReadBtn = newBook.querySelector(".toggleReadBtn");
+  toggleReadBtn.dataset.id = book.id
   const title = newBook.querySelector(".title");
   title.textContent = book.title
   const autorText = newBook.querySelector(".author");
@@ -53,5 +60,78 @@ function display() {
   myLibrary.forEach(appendNode);
 }
 
+const newBookBtn = document.querySelector(".newBookBtn");
+function toggleForm() {
+  resetForm();
+  const form = document.querySelector(".form");
+  if (form.style.display == "block") {
+    form.style.display = "none";
+  }
+  else {
+    form.style.display = "block";
+  }
+}
+
+newBookBtn.addEventListener("click", toggleForm);
+
+const cancelBtn = document.querySelector(".cancelBtn");
+cancelBtn.addEventListener("click", toggleForm);
+
+const pagesInput = document.querySelector("#pages");
+const authorInput = document.querySelector("#author");
+const readSelect = document.querySelector("#read");
+const titleInput = document.querySelector("#title");
+
+function resetForm() {
+
+  pagesInput.value = "";
+  authorInput.value = "";
+  titleInput.value = "";
+  readSelect.value = "";
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  addBookToLibrary(authorInput.value, titleInput.value, pagesInput.value, Boolean(readSelect.value))
+  toggleForm();
+  display();
+}
+const form = document.querySelector(".form");
+form.addEventListener("submit", handleSubmit);
+
+function removeCard(event) {
+  const button = event.target;
+  if (button.className == "removeBtn") {
+    console.log(button.dataset.id);
+    myLibrary = myLibrary.filter((item) => {
+      if (item.id == button.dataset.id) {
+        console.log(`${item.id} = ${button.dataset.id}`);
+        return false
+      }
+
+      else {
+        return true;
+      }
+    })
+  }
+  console.log(myLibrary);
+  display();
+}
 
 
+Book.prototype.toggleRead = function () {
+  this.read = (this.read) ? false : true;
+}
+function HandleToggleRead(event) {
+  const readButton = event.target;
+  const id = readButton.dataset.id;
+
+
+  if (readButton.className == "toggleReadBtn") {
+    const idElement = myLibrary.find((item) => {
+      return item.id == id;
+    });
+    idElement.toggleRead();
+  }
+  display();
+}
